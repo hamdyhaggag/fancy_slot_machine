@@ -85,9 +85,7 @@ class _ExampleScreenState extends State<ExampleScreen> {
               FancySlotMachine<String>(
                 items: participants,
                 labelBuilder: (item) => item,
-                onSpinStart: () {
-                  print('Machine started spinning!');
-                },
+                onSpinStart: _startLocalSpin,
                 onWinnerSelected: (selected) {
                   setState(() {
                     isSpinning = false;
@@ -108,14 +106,19 @@ class _ExampleScreenState extends State<ExampleScreen> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFFBBF24),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 40, vertical: 15),
+                      horizontal: 40,
+                      vertical: 15,
+                    ),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                   ),
                   child: const Text(
                     'Trigger Spin from Outside',
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
             ],
@@ -131,8 +134,10 @@ class _ExampleScreenState extends State<ExampleScreen> {
       builder: (context) => AlertDialog(
         backgroundColor: const Color(0xFF1E1E1E),
         title: const Center(
-          child: Text('🎉 Congratulations! 🎉',
-              style: TextStyle(color: Colors.white)),
+          child: Text(
+            '🎉 Congratulations! 🎉',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -142,17 +147,20 @@ class _ExampleScreenState extends State<ExampleScreen> {
             Text(
               winnerName,
               style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child:
-                const Text('Cool!', style: TextStyle(color: Color(0xFFFBBF24))),
+            child: const Text(
+              'Cool!',
+              style: TextStyle(color: Color(0xFFFBBF24)),
+            ),
           ),
         ],
       ),

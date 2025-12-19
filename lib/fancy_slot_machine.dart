@@ -82,10 +82,11 @@ class _FancySlotMachineState<T> extends State<FancySlotMachine<T>> {
     super.didUpdateWidget(oldWidget);
 
     // If a winner is provided and we were spinning, stop on it
-    if (widget.selectedWinner != null &&
+    final winner = widget.selectedWinner;
+    if (winner != null &&
         oldWidget.selectedWinner == null &&
         _internalIsSpinning) {
-      _stopSpinning(widget.selectedWinner!);
+      _stopSpinning(winner);
     }
 
     // Sync internal spinning state if forced from outside
@@ -184,7 +185,7 @@ class _FancySlotMachineState<T> extends State<FancySlotMachine<T>> {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withValues(alpha: 0.5),
                 blurRadius: 20,
                 spreadRadius: 5,
               )
@@ -232,10 +233,10 @@ class _FancySlotMachineState<T> extends State<FancySlotMachine<T>> {
             decoration: BoxDecoration(
               border: Border.all(color: widget.accentColor, width: 2),
               borderRadius: BorderRadius.circular(16),
-              color: widget.accentColor.withOpacity(0.1),
+              color: widget.accentColor.withValues(alpha: 0.1),
               boxShadow: [
                 BoxShadow(
-                  color: widget.accentColor.withOpacity(0.2),
+                  color: widget.accentColor.withValues(alpha: 0.2),
                   blurRadius: 10,
                   spreadRadius: 1,
                 )
@@ -270,13 +271,13 @@ class _FancySlotMachineState<T> extends State<FancySlotMachine<T>> {
                       gradient: LinearGradient(
                         colors: [
                           const Color(0xFFE94560),
-                          const Color(0xFFE94560).withOpacity(0.8),
+                          const Color(0xFFE94560).withValues(alpha: 0.8),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(30),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFE94560).withOpacity(0.4),
+                          color: const Color(0xFFE94560).withValues(alpha: 0.4),
                           blurRadius: 20,
                           offset: const Offset(0, 10),
                         )
@@ -305,7 +306,7 @@ class _FancySlotMachineState<T> extends State<FancySlotMachine<T>> {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 32, vertical: 4),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Center(
@@ -313,7 +314,7 @@ class _FancySlotMachineState<T> extends State<FancySlotMachine<T>> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Iconsax.user,
-                color: widget.textColor.withOpacity(0.7), size: 20),
+                color: widget.textColor.withValues(alpha: 0.7), size: 20),
             const SizedBox(width: 12),
             Text(
               _formatName(label),
@@ -329,7 +330,7 @@ class _FancySlotMachineState<T> extends State<FancySlotMachine<T>> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                 decoration: BoxDecoration(
-                  color: Colors.blue.withOpacity(0.2),
+                  color: Colors.blue.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(

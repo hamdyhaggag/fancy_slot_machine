@@ -1,3 +1,8 @@
+## 0.0.3
+
+* Improved package structure and documentation.
+* Enhanced widget customization options.
+
 ## 0.0.2
 
 * Fixed static analysis warnings (deprecated `withOpacity`, null check on generic).

@@ -1,0 +1,21 @@
+name: example
+description: An example of using the fancy_slot_machine package.
+publish_to: 'none'
+
+environment:
+  sdk: ^3.6.0
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  fancy_slot_machine:
+    path: ../
+  iconsax: ^0.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

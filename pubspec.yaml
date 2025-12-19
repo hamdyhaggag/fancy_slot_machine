@@ -1,0 +1,22 @@
+name: fancy_slot_machine
+description: A premium, customizable Slot Machine / Drum widget for draws and winners selection in Flutter.
+version: 0.0.1
+homepage: https://github.com/hamdyhaggag/fancy_slot_machine
+repository: https://github.com/hamdyhaggag/fancy_slot_machine
+
+environment:
+  sdk: ^3.6.0
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  iconsax: ^0.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true

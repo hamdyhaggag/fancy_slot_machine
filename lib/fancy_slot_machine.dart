@@ -283,7 +283,7 @@ class _FancySlotMachineState<T> extends State<FancySlotMachine<T>> {
                       ],
                     ),
                     child: const Text(
-                      'سحب فائز',
+                      'Draw Winner',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 24,

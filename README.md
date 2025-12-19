@@ -1,8 +1,8 @@
-# 🎰 Fancy Slot Machine for Flutter
+# Fancy Slot Machine for Flutter
 
 A **premium, highly customizable, and buttery-smooth** Slot Machine / Drum widget for Flutter.
 
-## 📸 Preview
+##  Preview
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/demo.gif" width="300" alt="Fancy Slot Machine Demo">

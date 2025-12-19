@@ -1,14 +1,37 @@
-# Fancy Slot Machine for Flutter
+# 🎰 Fancy Slot Machine for Flutter
 
 A **premium, highly customizable, and buttery-smooth** Slot Machine / Drum widget for Flutter.
 
-##  Preview
+---
+
+## 📸 Visual Showcase
+
+<div align="center">
+  <p><i>Experience the smooth physics and luxury gold aesthetics in action.</i></p>
+</div>
+
+<table align="center">
+  <tr>
+    <td align="center" width="350">
+      <b>Live Animation</b><br>
+      <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/demo.gif" width="320" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 2px solid #333;">
+    </td>
+    <td align="center" width="300">
+      <b>Modern UI</b><br>
+      <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/preview.jpg" width="280" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    </td>
+    <td align="center" width="300">
+      <b>Winner Celebration</b><br>
+      <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/winner.jpg" width="280" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    </td>
+  </tr>
+</table>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/demo.gif" width="300" alt="Fancy Slot Machine Demo">
-  <br>
-  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/preview.jpg" width="250" alt="Main UI">
-  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/winner.jpg" width="250" alt="Winner Dialog">
+  <a href="#-features">Features</a> •
+  <a href="#🏆-why-choose-fancy-slot-machine">Why Us?</a> •
+  <a href="#🚀-getting-started">Getting Started</a> •
+  <a href="#⚙️-api-reference">API</a>
 </p>
 
 ---

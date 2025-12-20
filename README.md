@@ -19,15 +19,13 @@ This package provides a complete "Live Draw" UI system, including:
 
 ### Live Animation
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/demo.gif" width="300" alt="Slot Machine Animation">
-  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/demo%202.gif" width="300" alt="Full Draw Flow">
+  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/demo%202.gif" width="600" alt="Full Draw Flow">
 </p>
 
 ### Screenshots
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/preview.webp" width="250" alt="Main Screen">
-  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/preview2.webp" width="250" alt="Draw in Progress">
-  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/winner.webp" width="250" alt="Winner Celebration">
+  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/preview2.webp" width="400" alt="Draw in Progress">
+  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/winner2.webp" width="400" alt="Winner Celebration">
 </p>
 
 <p align="center">

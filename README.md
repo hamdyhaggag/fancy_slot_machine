@@ -14,19 +14,37 @@ This package provides a complete "Live Draw" UI system, including:
 ## 📸 Visual Showcase
 
 <div align="center">
-  <p><i>Experience the smooth physics and luxury gold aesthetics in action.</i></p>
+
+### 🎬 Live Demo
+
+Experience the complete draw flow with smooth animations and premium UI
+
+<img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/demo%202.gif" width="700" alt="Live Draw Demo">
+
+---
+
+### 📱 Screenshots
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/preview2.webp" width="350" alt="Draw Interface">
+      <br>
+      <b>🎰 Draw Interface</b>
+      <br>
+      <sub>Premium slot machine with stats dashboard</sub>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/winner2.webp" width="350" alt="Winner Celebration">
+      <br>
+      <b>🎉 Winner Celebration</b>
+      <br>
+      <sub>Full-screen celebration with confetti</sub>
+    </td>
+  </tr>
+</table>
+
 </div>
-
-### Live Animation
-<p align="center">
-  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/demo%202.gif" width="600" alt="Full Draw Flow">
-</p>
-
-### Screenshots
-<p align="center">
-  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/preview2.webp" width="400" alt="Draw in Progress">
-  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/winner2.webp" width="400" alt="Winner Celebration">
-</p>
 
 <p align="center">
   <a href="#-features">Features</a> •

@@ -25,9 +25,9 @@ This package provides a complete "Live Draw" UI system, including:
 
 ### Screenshots
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/preview.jpg" width="250" alt="Main Screen">
-  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/preview%202.jpg" width="250" alt="Draw in Progress">
-  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/winner.jpg" width="250" alt="Winner Celebration">
+  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/preview.webp" width="250" alt="Main Screen">
+  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/preview2.webp" width="250" alt="Draw in Progress">
+  <img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/winner.webp" width="250" alt="Winner Celebration">
 </p>
 
 <p align="center">

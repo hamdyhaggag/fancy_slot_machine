@@ -19,7 +19,7 @@ This package provides a complete "Live Draw" UI system, including:
 
 Experience the complete draw flow with smooth animations and premium UI
 
-<img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/demo%202.gif" width="700" alt="Live Draw Demo">
+<img src="https://raw.githubusercontent.com/hamdyhaggag/fancy_slot_machine/master/assets/screenshots/demo%202.gif" width="350" alt="Live Draw Demo">
 
 ---
 

@@ -1,6 +1,13 @@
 # 🎰 Fancy Slot Machine for Flutter
 
-A **premium, highly customizable, and buttery-smooth** Slot Machine / Drum widget for Flutter.
+A **premium, highly customizable, and buttery-smooth** package for creating Live Draw and Slot Machine experiences in Flutter.
+
+This package provides a complete "Live Draw" UI system, including:
+*   🎰 **Premium Slot Machine**: A realistic 3D drum with smooth physics and elastic stops.
+*   🎉 **Full-Screen Celebration**: A stunning winner announcement with confetti and trophy animations.
+*   📊 **Draw Statistics**: A clean dashboard for displaying participants, drawn, and remaining counts.
+*   🏆 **Recent Winners List**: A horizontal scrollable list of previously selected winners.
+*   📝 **Draw Summary**: A beautiful card to display when the draw is fully completed.
 
 ---
 
@@ -38,41 +45,12 @@ A **premium, highly customizable, and buttery-smooth** Slot Machine / Drum widge
 
 ## Features
 
-- Generic Type Support: Works with any data model.
-- Integrated Spin Logic: Built-in "Spin" button and animation state management.
-- Fully Customizable: Control colors, durations, text styles, and drum aesthetics.
-- Smooth Physics: Uses ListWheelScrollView for a realistic 3D drum rotation effect.
-- Remote Triggering: Control the winner and animation from external state.
-- Responsive & Lightweight: Optimized for mobile performance.
-
----
-
-## Why Fancy Slot Machine?
-
-### Competitive Edge
-Unlike basic carousel or slot widgets, this package focus on **Visual Trust**. When users see a high-fidelity animation and premium design, they perceive the drawing process as more credible and professional.
-
-### Technical Superiority
-1. **Lazy Loading**: Using `childDelegate`, only items currently in view are rendered, saving memory and CPU cycles.
-2. **Deterministic Mechanics**: The stopping algorithm calculates the exact offset needed for multiple full rotations before landing, ensuring a perfect "suspense" phase.
-
----
-
-### Comparison: Fancy Slot Machine vs. Others
-
-| Feature | Standard Packages | Fancy Slot Machine 🚀 |
-| :--- | :--- | :--- |
-| **Visual Aesthetics** | Flat colors, outdated design. | **Modern Luxury Design** (Gold gradients, glassmorphism, professional shadows). |
-| **Animation Physics** | Linear or abrupt stopping. | **Elastic Bouncy Physics** (Realistic inertia and "bounce" when landing). |
-| **Data Interaction** | Often requires manual widget mapping. | **Generic Data Builders** (Pass your Model directly, it handles the rest). |
-| **Customization** | Complex setup for frames/indicators. | **Plug & Play UI** (Pre-styled frame, indicators, and integrated spin button). |
-| **Performance** | Laggy infinite scrolls. | **Seamless Infinite Loop** (High performance via `Delegates` handles 10,000+ items). |
-| **Best For** | Simple mini-games. | **Premium Apps & Official Draws** (Admin panels, high-stakes competitions). |
-
-### Key Value Pillars
-- **Zero Setup Time**: Don't waste hours designing the drum. Just pass your list and `labelBuilder` and enjoy the magic.
-- **High Performance**: Built with `ListWheelScrollView.useDelegate` ensuring 60/120 FPS even with massive datasets.
-- **Visual Trust**: The premium aesthetic builds trust with participants, making the draw feel official and fair.
+- **Generic Type Support**: Works with any data model.
+- **Integrated Spin Logic**: Built-in "Spin" button and animation state management.
+- **Full UI System**: Comes with celebration dialogs, stats bars, and winner lists.
+- **Smooth Physics**: Uses ListWheelScrollView for a realistic 3D drum rotation effect.
+- **Remote Triggering**: Control the winner and animation from external state.
+- **Responsive & Lightweight**: Optimized for mobile performance.
 
 ---
 
@@ -82,12 +60,16 @@ Add fancy_slot_machine to your pubspec.yaml:
 
 ```yaml
 dependencies:
-  fancy_slot_machine: ^0.0.1
+  fancy_slot_machine: ^0.0.5
   iconsax: ^0.0.8
+  confetti: ^0.8.0
 ```
+
+---
 
 ## Usage
 
+### 1. Basic Slot Machine
 ```dart
 import 'package:fancy_slot_machine/fancy_slot_machine.dart';
 
@@ -99,7 +81,42 @@ FancySlotMachine<String>(
 )
 ```
 
+### 2. Full Live Draw Experience
+
+```dart
+// 1. Show Stats Header
+FancyDrawStats(
+  participantsCount: 100,
+  drawnCount: 5,
+  remainingCount: 95,
+);
+
+// 2. Main Slot Machine
+FancySlotMachine<String>(
+  items: participants,
+  labelBuilder: (item) => item,
+  onWinnerSelected: (winner) {
+    // 3. Trigger Celebration on Win
+    FancyCelebration.show(
+      context,
+      winnerName: winner,
+      score: 1000,
+      onNext: () => Navigator.pop(context),
+    );
+  },
+);
+
+// 4. Show Recent Winners
+FancyRecentWinners(
+  winners: myWinnersList, // List of FancyWinnerItem
+);
+```
+
+---
+
 ## API Reference
+
+### FancySlotMachine
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
@@ -110,6 +127,14 @@ FancySlotMachine<String>(
 | selectedWinner | T? | Set this to target a winner. |
 | isSpinning | bool | Control spinning state. |
 | accentColor | Color | Primary theme color. |
+
+### FancyCelebration
+
+| Method | Description |
+| :--- | :--- |
+| **show(context, ...)** | Static method to trigger the full-screen celebration overlay. |
+
+---
 
 ## Developer
 

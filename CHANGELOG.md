@@ -1,3 +1,15 @@
+## 0.0.5
+
+* Added premium UI components: `FancyCelebration`, `FancyDrawStats`, `FancyRecentWinners`.
+* Added `FancyDrawSummary` for completed draws.
+* Included `confetti` dependency for celebration animations.
+* Fixed circular state build error in slot machine.
+
+## 0.0.4
+
+* Improved package structure and documentation.
+* Enhanced widget customization options.
+
 ## 0.0.3
 
 * Improved package structure and documentation.

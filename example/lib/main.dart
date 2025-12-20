@@ -12,7 +12,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          elevation: 0.5,
+          iconTheme: IconThemeData(color: Color(0xFF2D3748)),
+          titleTextStyle: TextStyle(
+              color: Color(0xFF2D3748),
+              fontWeight: FontWeight.bold,
+              fontSize: 20),
+        ),
+      ),
       home: const ExampleScreen(),
     );
   }
@@ -26,6 +37,7 @@ class ExampleScreen extends StatefulWidget {
 }
 
 class _ExampleScreenState extends State<ExampleScreen> {
+  // Mock Data
   final List<String> participants = [
     'Ahmed Mohamed',
     'Sara Hassan',
@@ -35,135 +47,133 @@ class _ExampleScreenState extends State<ExampleScreen> {
     'Layla Yousef',
     'Hamdy Haggag',
     'Zainab Khalid',
+    'Youssef Ahmed',
+    'Noura Salem',
   ];
 
-  String? winner;
+  List<FancyWinnerItem> winners = [];
+  String? currentTargetWinner;
   bool isSpinning = false;
+  final int totalWinnersNeeded = 3;
 
-  void _startLocalSpin() {
+  void _startSpin() {
+    if (winners.length >= totalWinnersNeeded) return;
+
     setState(() {
       isSpinning = true;
-      winner = null;
+      currentTargetWinner = null;
     });
 
-    // Simulate getting a winner from an API after 3 seconds
-    Future.delayed(const Duration(seconds: 3), () {
+    // Simulate network delay to pick a winner
+    Future.delayed(const Duration(seconds: 2), () {
       if (mounted) {
-        setState(() {
-          winner = (participants..shuffle()).first;
-        });
+        // Pick a random winner who isn't already a winner
+        final available = participants
+            .where((p) => !winners.any((w) => w.name == p))
+            .toList();
+        if (available.isNotEmpty) {
+          setState(() {
+            currentTargetWinner = (available..shuffle()).first;
+          });
+        }
       }
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF121212),
-      appBar: AppBar(
-        title: const Text('Fancy Slot Machine Demo'),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Lucky Draw',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(height: 40),
+  void _handleWinnerSelected(String winnerName) {
+    setState(() {
+      isSpinning = false;
+      winners.add(FancyWinnerItem(
+        name: winnerName,
+        score: '${1000 + (winners.length * 150)}', // Mock score
+        avatarUrl: null,
+      ));
+    });
 
-              // The Slot Machine Widget
-              FancySlotMachine<String>(
-                items: participants,
-                labelBuilder: (item) => item,
-                onSpinStart: _startLocalSpin,
-                onWinnerSelected: (selected) {
-                  setState(() {
-                    isSpinning = false;
-                    winner = selected;
-                  });
-                  _showWinnerDialog(selected);
-                },
-                selectedWinner: winner,
-                isSpinning: isSpinning,
-                accentColor: const Color(0xFFFBBF24),
-              ),
-
-              const SizedBox(height: 50),
-
-              if (!isSpinning)
-                ElevatedButton(
-                  onPressed: _startLocalSpin,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFFBBF24),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 40,
-                      vertical: 15,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                  child: const Text(
-                    'Trigger Spin from Outside',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-            ],
-          ),
-        ),
-      ),
+    // Show the premium celebration dialog
+    FancyCelebration.show(
+      context,
+      winnerName: winnerName,
+      score: 1000 + (winners.length * 150),
+      position: winners.length,
+      totalParticipants: participants.length,
+      onNext: () {
+        Navigator.pop(context); // Close celebration
+        // Optionally auto-start next spin or just wait
+      },
     );
   }
 
-  void _showWinnerDialog(String winnerName) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: const Color(0xFF1E1E1E),
-        title: const Center(
-          child: Text(
-            '🎉 Congratulations! 🎉',
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.star, color: Color(0xFFFBBF24), size: 64),
-            const SizedBox(height: 16),
-            Text(
-              winnerName,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+  @override
+  Widget build(BuildContext context) {
+    bool isCompleted = winners.length >= totalWinnersNeeded;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Live Draw'),
+        centerTitle: true,
+      ),
+      body: isCompleted
+          ? FancyDrawSummary(
+              winners: winners,
+              title: "Draw Completed!",
+              subtitlePrefix: "Winners Selected:",
+            )
+          : Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  // 1. Stats Header
+                  FancyDrawStats(
+                    participantsCount: participants.length,
+                    drawnCount: winners.length,
+                    remainingCount: totalWinnersNeeded - winners.length,
+                    participantsLabel: "Participants",
+                    drawnLabel: "Drawn",
+                    remainingLabel: "Remaining",
+                  ),
+
+                  const Spacer(),
+
+                  // 2. Main Slot Machine
+                  SizedBox(
+                    height: 400,
+                    child: FancySlotMachine<String>(
+                      items: participants,
+                      labelBuilder: (item) => item,
+                      subtitleBuilder: (item) => '1000 Points', // Mock points
+                      isSpinning: isSpinning,
+                      selectedWinner: currentTargetWinner,
+                      onSpinStart:
+                          _startSpin, // Triggered by button in slot machine
+                      onWinnerSelected: _handleWinnerSelected,
+                      accentColor: const Color(0xFFFBBF24),
+                    ),
+                  ),
+
+                  const Spacer(),
+
+                  // 3. Recent Winners List
+                  if (winners.isNotEmpty) ...[
+                    const Align(
+                      alignment: Alignment.centerRight,
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 8.0, right: 8.0),
+                        child: Text(
+                          "Recent Winners",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ),
+                    ),
+                    FancyRecentWinners(winners: winners.reversed.toList()),
+                  ],
+                  const SizedBox(height: 20),
+                ],
               ),
             ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text(
-              'Cool!',
-              style: TextStyle(color: Color(0xFFFBBF24)),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

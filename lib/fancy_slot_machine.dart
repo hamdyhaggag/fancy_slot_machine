@@ -2,6 +2,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+export 'fancy_celebration.dart';
+export 'fancy_draw_summary.dart';
+export 'fancy_recent_winners.dart';
+export 'fancy_models.dart';
+export 'fancy_draw_stats.dart';
+
 /// A premium, customizable Slot Machine / Drum widget for draws and winners selection.
 /// This widget is designed to be extracted as a package.
 class FancySlotMachine<T> extends StatefulWidget {
@@ -100,14 +106,16 @@ class _FancySlotMachineState<T> extends State<FancySlotMachine<T>> {
     }
   }
 
-  void _startSpinning() {
+  void _startSpinning({bool fromUser = false}) {
     if (_internalIsSpinning || widget.items.isEmpty) return;
 
     setState(() {
       _internalIsSpinning = true;
     });
 
-    widget.onSpinStart();
+    if (fromUser) {
+      widget.onSpinStart();
+    }
 
     const duration = Duration(milliseconds: 100);
     _spinTimer = Timer.periodic(duration, (timer) {
@@ -263,7 +271,7 @@ class _FancySlotMachineState<T> extends State<FancySlotMachine<T>> {
           child: _internalIsSpinning
               ? const SizedBox()
               : GestureDetector(
-                  onTap: _startSpinning,
+                  onTap: () => _startSpinning(fromUser: true),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 48, vertical: 16),
